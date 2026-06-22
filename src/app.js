@@ -16,13 +16,8 @@ app.use(express.json());
 // Routes
 app.use('/api/products', productRoutes);
 
-// Base route for simple health check
-app.get('/', (req, res) => {
-  res.status(200).json({
-    status: 'healthy',
-    message: 'Product Catalog API is running'
-  });
-});
+// Serve static frontend files
+app.use(express.static('public'));
 
 // Centralized error handler (must be registered after all other routes/middleware)
 app.use(errorHandler);
